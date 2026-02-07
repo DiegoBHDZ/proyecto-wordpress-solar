@@ -1,0 +1,26 @@
+{
+  "name": "tema-solar-energy",
+  "version": "1.0.0",
+  "description": "Tema WordPress moderno para empresas de energía solar",
+  "main": "index.php",
+  "scripts": {
+    "watch": "echo 'Watching for changes...'",
+    "build": "echo 'Building assets...'",
+    "zip": "zip -r tema-solar.zip . -x '*.git*' 'node_modules/*' 'package-lock.json' '.DS_Store'"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "solar",
+    "energy",
+    "renewable"
+  ],
+  "author": "BHDZ",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

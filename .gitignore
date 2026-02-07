@@ -1,0 +1,138 @@
+# ==========================================
+# WordPress Blog Project - .gitignore
+# ==========================================
+
+# === Archivos de entorno y credenciales ===
+.env
+.env.local
+.env.*.local
+wp-config.php
+.htaccess
+
+# === Base de datos ===
+*.sql
+*.sql.gz
+*.sqlite
+
+# === WordPress Core ===
+# No incluimos el core de WordPress, solo wp-content customizado
+
+# === Temas de terceros ===
+# Solo incluimos nuestro tema custom: tema-solar
+wp-content/themes/generatepress/
+wp-content/themes/hello-elementor/
+wp-content/themes/twentytwentythree/
+wp-content/themes/twentytwentyfour/
+wp-content/themes/twentytwentyfive/
+
+# === Plugins de terceros ===
+# Los plugins se instalan vía WordPress, no se versionan
+wp-content/plugins/elementor/
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+
+# === Archivos subidos por usuarios ===
+wp-content/uploads/*
+# Permitir carpeta uploads vacía con .gitkeep si existe
+!wp-content/uploads/.gitkeep
+
+# === WordPress internals ===
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/languages/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/object-cache.php
+
+# === Sistema Operativo ===
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Linux
+*~
+.directory
+.fuse_hidden*
+
+# === IDEs y Editores ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.tmproj
+*.code-workspace
+.phpintel/
+.phpunit.result.cache
+
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm
+.yarn-integrity
+
+# === Logs ===
+*.log
+logs/
+*.log.*
+error_log
+access_log
+
+# === Archivos temporales ===
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+*.cache
+.sass-cache/
+
+# === Build files ===
+*.map
+*.min.css.map
+*.min.js.map
+dist/
+build/
+
+# === Composer (si se usa) ===
+/vendor/
+composer.phar
+composer.lock
+
+# === Testing ===
+.phpunit.cache
+coverage/
+.nyc_output/
+phpunit.xml
+.phpcs.xml
+
+# === Docker (conservar docker-compose.yml y .env) ===
+# Mantenemos docker-compose.yml en el repo
+# .env se ignora, .env.example se incluye
+
+# === Otros ===
+sitemap.xml
+sitemap.xml.gz

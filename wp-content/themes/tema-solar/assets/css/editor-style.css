@@ -1,0 +1,163 @@
+/**
+ * Editor Styles
+ *
+ * Estilos para el editor de bloques de Gutenberg
+ *
+ * @package Tema Solar Energy
+ * @since 1.0.0
+ */
+
+/* Tipografía del editor */
+.editor-styles-wrapper {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #292B2E;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #292B2E;
+}
+
+/* Colores del tema en el editor */
+.has-primary-color {
+    color: #FEC910 !important;
+}
+
+.has-primary-background-color {
+    background-color: #FEC910 !important;
+}
+
+.has-secondary-color {
+    color: #F4F5F8 !important;
+}
+
+.has-secondary-background-color {
+    background-color: #F4F5F8 !important;
+}
+
+.has-dark-color {
+    color: #292B2E !important;
+}
+
+.has-dark-background-color {
+    background-color: #292B2E !important;
+}
+
+.has-light-color {
+    color: #FFFFFF !important;
+}
+
+.has-light-background-color {
+    background-color: #FFFFFF !important;
+}
+
+.has-success-color {
+    color: #28A745 !important;
+}
+
+.has-success-background-color {
+    background-color: #28A745 !important;
+}
+
+/* Botones */
+.wp-block-button__link {
+    border-radius: 0;
+    padding: 12px 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wp-block-button.is-style-shadow-button .wp-block-button__link {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Listas con checkmark */
+.is-style-checkmark-list {
+    list-style-type: "✓";
+}
+
+.is-style-checkmark-list li {
+    padding-inline-start: 1ch;
+    color: #28A745;
+}
+
+/* Márgenes y espaciado */
+.wp-block {
+    max-width: 1140px;
+}
+
+.wp-block[data-align="wide"] {
+    max-width: 1320px;
+}
+
+.wp-block[data-align="full"] {
+    max-width: none;
+}
+
+/* Tablas */
+.wp-block-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wp-block-table td,
+.wp-block-table th {
+    border: 1px solid #F4F5F8;
+    padding: 12px;
+}
+
+.wp-block-table thead {
+    background-color: #FEC910;
+    color: #292B2E;
+}
+
+/* Citas */
+.wp-block-quote {
+    border-left: 4px solid #FEC910;
+    padding-left: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+.wp-block-quote cite {
+    color: #FEC910;
+    font-weight: 600;
+}
+
+/* Código */
+.wp-block-code {
+    background-color: #292B2E;
+    color: #FEC910;
+    padding: 20px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Imagen */
+.wp-block-image figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Separador */
+.wp-block-separator {
+    border-color: #FEC910;
+    border-width: 2px;
+}
+
+/* Espaciador */
+.wp-block-spacer {
+    background-color: transparent;
+}
