@@ -1,0 +1,220 @@
+/*
+==================================================
+CSS PERSONALIZADO PARA WORDPRESS
+==================================================
+Estilos adicionales específicos para las plantillas de WordPress
+*/
+
+/* Page Header Styles */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/carousel-1.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-header .breadcrumb {
+    background-color: transparent;
+}
+
+.page-header .breadcrumb-item a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.page-header .breadcrumb-item a:hover {
+    color: #009CFF;
+}
+
+.page-header .breadcrumb-item.active {
+    color: #009CFF;
+}
+
+.page-header .breadcrumb-item+.breadcrumb-item::before {
+    color: #ffffff;
+}
+
+/* Entry Content Styles */
+.entry-content {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.entry-content p {
+    margin-bottom: 1.5rem;
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.entry-content ul,
+.entry-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.entry-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.entry-content blockquote {
+    border-left: 4px solid #009CFF;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Blog Post Meta */
+.entry-content .page-links {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Tags */
+.tags {
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.tags strong {
+    color: #009CFF;
+    margin-right: 0.5rem;
+}
+
+/* Comments */
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Sidebar Widgets */
+.sidebar .widget {
+    margin-bottom: 2rem;
+}
+
+.sidebar .widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .widget ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar .widget ul li:last-child {
+    border-bottom: none;
+}
+
+.sidebar .widget ul li a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.sidebar .widget ul li a:hover {
+    color: #009CFF;
+}
+
+/* Portfolio Items */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    transition: 0.5s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.portfolio-item:hover .portfolio-btn {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .page-header {
+        padding: 60px 0 !important;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-header h1 {
+        font-size: 2rem !important;
+    }
+}
+
+/* WordPress Alignment Classes */
+.alignleft {
+    float: left;
+    margin: 0.5rem 1.5rem 1.5rem 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0.5rem 0 1.5rem 1.5rem;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* WordPress Gallery */
+.gallery {
+    margin: 1.5rem 0;
+}
+
+.gallery-item {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.gallery-columns-2 .gallery-item {
+    max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+    max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+    max-width: 25%;
+}

@@ -1,0 +1,27 @@
+/*
+Theme Name: Tema Personal Solar
+Theme URI: https://example.com/tema-personal
+Author: Diego
+Author URI: https://example.com
+Description: Tema personalizado basado en plantilla HTML Solar Energy. Usa metodología tradicional de Page Templates sin constructores visuales.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tema-personal
+Tags: energy, solar, business, one-column, custom-templates
+*/
+
+/*
+==================================================
+NOTA IMPORTANTE:
+==================================================
+Este archivo solo contiene la información del tema
+para que WordPress lo reconozca.
+
+Los estilos CSS reales del template están en:
+/css/style.css
+
+Estos se cargan automáticamente desde functions.php
+usando wp_enqueue_style()
+==================================================
+*/
