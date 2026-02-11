@@ -40,12 +40,12 @@ add_action('after_setup_theme', 'tema_personal_setup');
  */
 function tema_personal_enqueue_scripts() {
     // Versión del tema
-    $theme_version = '1.0.0';
+    $theme_version = '1.0.2';
 
-    // Google Fonts
+    // Google Fonts - Poppins para TRAVELER
     wp_enqueue_style(
         'tema-personal-fonts',
-        'https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
         array(),
         null
     );
@@ -82,13 +82,7 @@ function tema_personal_enqueue_scripts() {
         $theme_version
     );
 
-    // CSS personalizado para WordPress
-    wp_enqueue_style(
-        'tema-personal-wordpress-custom',
-        get_template_directory_uri() . '/css/wordpress-custom.css',
-        array('tema-personal-style'),
-        $theme_version
-    );
+    // No cargar WordPress custom CSS (usamos el CSS de tema-blog directamente)
 
     // jQuery (WordPress lo incluye)
     wp_enqueue_script('jquery');
@@ -165,13 +159,35 @@ function tema_personal_enqueue_scripts() {
         true
     );
 
-    // Script principal del tema
+    // Script principal del tema (usa el main.js original de Solar)
     wp_enqueue_script(
         'tema-personal-main',
         get_template_directory_uri() . '/js/main.js',
-        array('jquery'),
+        array('jquery', 'bootstrap-bundle', 'owl-carousel'),
         $theme_version,
         true
     );
 }
 add_action('wp_enqueue_scripts', 'tema_personal_enqueue_scripts');
+
+/**
+ * Obtener imagen por defecto del blog
+ *
+ * @param string $size Tamaño de la imagen ('full', 'thumbnail', 'medium', 'large')
+ * @return string URL de la imagen por defecto
+ */
+function tema_personal_get_default_blog_image($size = 'full') {
+    $default_image = get_template_directory_uri() . '/tema-blog/img/';
+
+    switch ($size) {
+        case 'thumbnail':
+        case 'small':
+            $default_image .= 'blog-100x100.jpg';
+            break;
+        default:
+            $default_image .= 'blog-1.jpg';
+            break;
+    }
+
+    return $default_image;
+}

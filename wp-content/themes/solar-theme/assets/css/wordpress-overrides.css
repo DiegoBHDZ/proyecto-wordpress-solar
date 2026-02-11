@@ -412,3 +412,178 @@ img {
         display: none !important;
     }
 }
+
+/* ================================================
+   BLOG STYLES
+   ================================================ */
+
+/* Blog item cards */
+.blog-item {
+    box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+    transition: .3s;
+    overflow: hidden;
+}
+
+.blog-item:hover {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .15);
+}
+
+.blog-item img {
+    transition: .3s;
+}
+
+.blog-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Blog date badge */
+.blog-date {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #009CFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.blog-date h6 {
+    color: #FFFFFF !important;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.blog-date small {
+    color: #FFFFFF !important;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Post content images */
+.post-content img,
+.wp-block-post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Post meta information */
+.post-meta {
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.post-meta .meta-item {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Post tags */
+.post-tags a {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #F8F9FA;
+    color: #666666;
+    font-size: 14px;
+    margin: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.post-tags a:hover {
+    background: #009CFF !important;
+    color: #FFFFFF !important;
+}
+
+/* Query pagination */
+.wp-block-query-pagination .page-numbers {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    color: #666666;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+
+.wp-block-query-pagination .page-numbers.current,
+.wp-block-query-pagination .page-numbers:hover {
+    background: #009CFF !important;
+    border-color: #009CFF !important;
+    color: #FFFFFF !important;
+}
+
+/* Comments */
+.wp-block-comments .comment-reply-link {
+    font-size: 14px;
+    color: #009CFF !important;
+    text-decoration: none;
+}
+
+.wp-block-comments .comment-reply-link:hover {
+    text-decoration: underline;
+}
+
+/* Category and tag badges */
+.wp-block-post-terms a {
+    transition: all 0.3s;
+}
+
+.wp-block-post-terms a:hover {
+    opacity: 0.8;
+}
+
+/* Archive title */
+.wp-block-query-title {
+    margin-bottom: 1.5rem;
+}
+
+/* Post featured image with date overlay */
+.wp-block-post-featured-image {
+    position: relative;
+}
+
+/* Sidebar widgets styling */
+.wp-block-latest-posts li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.wp-block-latest-posts li:last-child {
+    border-bottom: none;
+}
+
+.wp-block-categories li,
+.wp-block-tag-cloud a {
+    transition: all 0.3s;
+}
+
+.wp-block-tag-cloud a {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #F8F9FA;
+    color: #666666;
+    font-size: 14px;
+    margin: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.wp-block-tag-cloud a:hover {
+    background: #009CFF !important;
+    color: #FFFFFF !important;
+}

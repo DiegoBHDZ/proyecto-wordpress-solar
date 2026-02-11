@@ -1,183 +1,170 @@
 <?php
 /**
- * Template para posts individuales
+ * Template para mostrar un post individual del blog
  *
  * @package Tema_Personal
  */
 
-get_header();
-?>
+get_header(); ?>
 
-<!-- Page Header Start -->
-<div class="container-fluid page-header py-5">
-    <div class="container text-center py-5">
-        <h1 class="display-4 text-white mb-4 animated slideInDown"><?php the_title(); ?></h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php the_title(); ?></li>
-            </ol>
-        </nav>
-    </div>
-</div>
-<!-- Page Header End -->
-
-<!-- Blog Post Start -->
-<div class="container-fluid py-5">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <?php
-                if (have_posts()) :
-                    while (have_posts()) :
-                        the_post();
-                        ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class('mb-5'); ?>>
-                            <?php if (has_post_thumbnail()) : ?>
-                                <div class="mb-4">
-                                    <?php the_post_thumbnail('large', array('class' => 'img-fluid w-100')); ?>
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <?php while (have_posts()) : the_post(); ?>
+                        <!-- Blog Detail Start -->
+                        <div class="pb-3">
+                            <div class="blog-item">
+                                <div class="position-relative">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('large', array('class' => 'img-fluid w-100')); ?>
+                                    <?php else : ?>
+                                        <img class="img-fluid w-100" src="<?php echo tema_personal_get_default_blog_image(); ?>" alt="<?php the_title(); ?>">
+                                    <?php endif; ?>
+                                    <div class="blog-date">
+                                        <h6 class="font-weight-bold mb-n1"><?php echo get_the_date('d'); ?></h6>
+                                        <small class="text-white text-uppercase"><?php echo get_the_date('M'); ?></small>
+                                    </div>
                                 </div>
-                            <?php endif; ?>
+                            </div>
 
-                            <div class="mb-3">
-                                <span class="text-primary text-uppercase"><i class="far fa-calendar-alt mr-2"></i><?php echo get_the_date(); ?></span>
-                                <span class="text-primary text-uppercase mx-3">|</span>
-                                <span class="text-primary text-uppercase"><i class="far fa-user mr-2"></i><?php the_author(); ?></span>
-                                <?php if (has_category()) : ?>
-                                    <span class="text-primary text-uppercase mx-3">|</span>
-                                    <span class="text-primary text-uppercase"><i class="far fa-folder mr-2"></i><?php the_category(', '); ?></span>
+                            <div class="bg-white mb-3 post-content" style="padding: 30px;">
+                                <!-- Post Meta -->
+                                <div class="post-meta d-flex mb-3">
+                                    <div class="meta-item">
+                                        <a class="text-primary text-uppercase text-decoration-none" href="#">
+                                            <i class="fa fa-calendar mr-2"></i><?php echo get_the_date('F j, Y'); ?>
+                                        </a>
+                                    </div>
+                                    <span class="text-primary px-2">|</span>
+                                    <div class="meta-item">
+                                        <?php
+                                        $categories = get_the_category();
+                                        if (!empty($categories)) {
+                                            echo '<a class="text-primary text-uppercase text-decoration-none" href="' . esc_url(get_category_link($categories[0]->term_id)) . '"><i class="fa fa-folder mr-2"></i>' . esc_html($categories[0]->name) . '</a>';
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <!-- Post Title -->
+                                <h2 class="mb-3"><?php the_title(); ?></h2>
+
+                                <!-- Post Content -->
+                                <?php the_content(); ?>
+
+                                <!-- Post Tags -->
+                                <?php
+                                $tags = get_the_tags();
+                                if ($tags) :
+                                ?>
+                                    <div class="post-tags mt-4 pt-4" style="border-top: 1px solid #E5E5E5;">
+                                        <h5 class="mb-3">Etiquetas:</h5>
+                                        <?php foreach ($tags as $tag) : ?>
+                                            <a href="<?php echo get_tag_link($tag->term_id); ?>"><?php echo $tag->name; ?></a>
+                                        <?php endforeach; ?>
+                                    </div>
                                 <?php endif; ?>
-                            </div>
 
-                            <div class="entry-content">
-                                <?php
-                                the_content();
-
-                                wp_link_pages(array(
-                                    'before' => '<div class="page-links">' . esc_html__('Pages:', 'tema-personal'),
-                                    'after'  => '</div>',
-                                ));
-                                ?>
-                            </div>
-
-                            <?php if (has_tag()) : ?>
-                                <div class="tags mt-4">
-                                    <strong>Tags:</strong> <?php the_tags('', ', ', ''); ?>
+                                <!-- Post Navigation -->
+                                <div class="d-flex justify-content-between mt-4 pt-4" style="border-top: 1px solid #E5E5E5;">
+                                    <div>
+                                        <?php
+                                        $prev_post = get_previous_post();
+                                        if ($prev_post) :
+                                        ?>
+                                            <a href="<?php echo get_permalink($prev_post); ?>" class="btn btn-outline-primary">
+                                                <i class="fa fa-angle-left mr-2"></i> Post Anterior
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                        <?php
+                                        $next_post = get_next_post();
+                                        if ($next_post) :
+                                        ?>
+                                            <a href="<?php echo get_permalink($next_post); ?>" class="btn btn-outline-primary">
+                                                Post Siguiente <i class="fa fa-angle-right ml-2"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                            <?php endif; ?>
-                        </article>
-
-                        <div class="row mb-5">
-                            <div class="col-6">
-                                <?php
-                                $prev_post = get_previous_post();
-                                if ($prev_post) :
-                                    ?>
-                                    <a href="<?php echo get_permalink($prev_post); ?>" class="btn btn-outline-primary">
-                                        <i class="fa fa-angle-left mr-2"></i> Previous Post
-                                    </a>
-                                    <?php
-                                endif;
-                                ?>
-                            </div>
-                            <div class="col-6 text-right">
-                                <?php
-                                $next_post = get_next_post();
-                                if ($next_post) :
-                                    ?>
-                                    <a href="<?php echo get_permalink($next_post); ?>" class="btn btn-outline-primary">
-                                        Next Post <i class="fa fa-angle-right ml-2"></i>
-                                    </a>
-                                    <?php
-                                endif;
-                                ?>
                             </div>
                         </div>
+                        <!-- Blog Detail End -->
 
-                        <?php
-                        if (comments_open() || get_comments_number()) :
-                            comments_template();
-                        endif;
-                    endwhile;
-                else :
-                    ?>
-                    <p><?php esc_html_e('No se encontró contenido.', 'tema-personal'); ?></p>
-                    <?php
-                endif;
-                ?>
-            </div>
-
-            <!-- Sidebar Start -->
-            <div class="col-lg-4">
-                <!-- Search Widget -->
-                <div class="mb-5">
-                    <form action="<?php echo home_url('/'); ?>" method="get">
-                        <div class="input-group">
-                            <input type="text" name="s" class="form-control border-0 p-4" placeholder="Search..." value="<?php echo get_search_query(); ?>">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary px-4"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
+                    <?php endwhile; ?>
                 </div>
 
-                <!-- Categories Widget -->
-                <?php if (has_category()) : ?>
+                <!-- Sidebar Start -->
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <!-- Category List -->
                     <div class="mb-5">
-                        <h3 class="mb-4">Categories</h3>
-                        <div class="bg-secondary" style="padding: 30px;">
-                            <ul class="list-unstyled m-0">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Categorías</h4>
+                        <div class="bg-white" style="padding: 30px;">
+                            <ul class="list-inline m-0">
                                 <?php
-                                $categories = get_categories();
+                                $categories = get_categories(array(
+                                    'orderby' => 'count',
+                                    'order'   => 'DESC',
+                                    'number'  => 5
+                                ));
                                 foreach ($categories as $category) :
-                                    ?>
-                                    <li class="mb-2">
-                                        <a href="<?php echo get_category_link($category->term_id); ?>">
-                                            <i class="fa fa-angle-right text-primary mr-2"></i><?php echo $category->name; ?> (<?php echo $category->count; ?>)
-                                        </a>
-                                    </li>
-                                    <?php
-                                endforeach;
                                 ?>
+                                    <li class="mb-3 d-flex justify-content-between align-items-center">
+                                        <a class="text-dark" href="<?php echo get_category_link($category->term_id); ?>">
+                                            <i class="fa fa-angle-right text-primary mr-2"></i><?php echo $category->name; ?>
+                                        </a>
+                                        <span class="badge badge-primary badge-pill"><?php echo $category->count; ?></span>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
-                <?php endif; ?>
 
-                <!-- Recent Posts Widget -->
-                <div class="mb-5">
-                    <h3 class="mb-4">Recent Posts</h3>
-                    <?php
-                    $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => 5,
-                        'post_status' => 'publish'
-                    ));
-                    foreach ($recent_posts as $recent) :
-                        ?>
-                        <div class="d-flex mb-3">
-                            <?php if (has_post_thumbnail($recent['ID'])) : ?>
-                                <div class="mr-3" style="width: 80px;">
-                                    <?php echo get_the_post_thumbnail($recent['ID'], 'thumbnail', array('class' => 'img-fluid')); ?>
-                                </div>
-                            <?php endif; ?>
-                            <div>
-                                <a href="<?php echo get_permalink($recent['ID']); ?>">
-                                    <h6><?php echo $recent['post_title']; ?></h6>
-                                </a>
-                                <small><i class="far fa-calendar-alt mr-2"></i><?php echo get_the_date('', $recent['ID']); ?></small>
-                            </div>
-                        </div>
+                    <!-- Recent Post -->
+                    <div class="mb-5">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Posts Recientes</h4>
                         <?php
-                    endforeach;
-                    wp_reset_query();
-                    ?>
+                        $recent_posts = wp_get_recent_posts(array(
+                            'numberposts' => 3,
+                            'post_status' => 'publish'
+                        ));
+                        foreach ($recent_posts as $recent) :
+                            $post_id = $recent['ID'];
+                            $thumbnail = get_the_post_thumbnail_url($post_id, 'thumbnail');
+                            if (!$thumbnail) {
+                                $thumbnail = tema_personal_get_default_blog_image();
+                            }
+                        ?>
+                            <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="<?php echo get_permalink($post_id); ?>">
+                                <img class="img-fluid" src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr($recent['post_title']); ?>" style="width: 100px; height: 100px; object-fit: cover;">
+                                <div class="pl-3">
+                                    <h6 class="m-1"><?php echo esc_html($recent['post_title']); ?></h6>
+                                    <small><?php echo get_the_date('M d, Y', $post_id); ?></small>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- Tag Cloud -->
+                    <div class="mb-5">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Etiquetas</h4>
+                        <div class="d-flex flex-wrap m-n1">
+                            <?php
+                            $tags = get_tags(array('number' => 10));
+                            foreach ($tags as $tag) :
+                            ?>
+                                <a href="<?php echo get_tag_link($tag->term_id); ?>" class="btn btn-light m-1"><?php echo $tag->name; ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                 </div>
+                <!-- Sidebar End -->
             </div>
-            <!-- Sidebar End -->
         </div>
     </div>
-</div>
-<!-- Blog Post End -->
+    <!-- Blog End -->
 
 <?php get_footer(); ?>

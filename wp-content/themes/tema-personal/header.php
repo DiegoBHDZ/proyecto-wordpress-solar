@@ -34,6 +34,7 @@
             </a>
             <div class="navbar-nav mr-auto py-0">
                 <a href="#team" class="nav-item nav-link">Team</a>
+                <a href="<?php echo home_url('/blog/'); ?>" class="nav-item nav-link">Blog</a>
                 <a href="#faqs" class="nav-item nav-link">FAQs</a>
                 <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
                 <a href="#contact" class="nav-item nav-link">Contact</a>

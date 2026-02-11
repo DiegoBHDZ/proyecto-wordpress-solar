@@ -1,36 +1,33 @@
 version: '3.1'
 
 services:
-  # --- SERVICIO DE WORDPRESS ---
   wordpress:
     image: wordpress:latest
-    restart: always
     ports:
-      - "${WORDPRESS_PORT:-8080}:80"
+      - 8080:80
     environment:
-      WORDPRESS_DB_HOST: ${DB_HOST:-db}
-      WORDPRESS_DB_USER: ${DB_USER}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
-      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
     volumes:
-      # Esto conecta la carpeta wp-content del contenedor a tu escritorio
-      # Así podrás ver y editar plugins/temas desde tu Linux
+      # ESTA LÍNEA ES LA CLAVE: Conecta tu carpeta local con el contenedor
       - ./wp-content:/var/www/html/wp-content
+    restart: always
     depends_on:
       - db
 
-  # --- SERVICIO DE BASE DE DATOS (MySQL) ---
   db:
     image: mysql:5.7
-    restart: always
     environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
     volumes:
-      # Esto asegura que si apagas Docker, no pierdas tus posts
+      # Esto guarda la base de datos en un volumen oculto de Docker (seguro)
       - db_data:/var/lib/mysql
+    restart: always
 
 volumes:
   db_data:
