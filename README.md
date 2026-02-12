@@ -1,149 +1,52 @@
-# WordPress Blog - Tema Personal
+# WordPress Custom Theme - Blog
 
-WordPress blog con tema personalizado desarrollado desde cero.
+Custom WordPress theme with complete blog system.
 
-## Características
-
-- Tema personalizado "Tema Personal" con diseño profesional
-- Sistema de blog completo con posts, categorías y tags
-- Diseño responsive
-- Widgets personalizados
-- Docker Compose para desarrollo local
-
-## Requisitos
+## Requirements
 
 - Docker
 - Docker Compose
-- Git
 
-## Instalación Rápida
+## Installation
 
 ```bash
-# Clonar repositorio
-git clone <tu-repositorio-url>
+# Clone repository
+git clone <repository-url>
 cd mi_blog_prueba
 
-# Ejecutar setup automático
+# Run setup
 ./setup.sh
 ```
 
-El script automáticamente:
-1. Crea el archivo `.env` de configuración
-2. Levanta los contenedores de Docker
-3. Importa la base de datos con contenido demo
-4. Configura WordPress
+## Access
 
-**Tiempo estimado: 2 minutos**
+**URL:** http://localhost:8080
 
-## Acceso
+**Credentials:**
+- Username: `admin`
+- Password: `admin`
 
-- **URL:** http://localhost:8080
-- **Usuario:** admin
-- **Contraseña:** admin
+## What's Included
 
-## Estructura del Proyecto
+- Custom theme "Tema Personal"
+- 3 demo blog posts
+- Responsive design
+- Widget system
+- Configured menus
 
-```
-.
-├── docker-compose.yml       # Configuración Docker
-├── setup.sh                 # Script de instalación automática
-├── database.sql             # Backup de base de datos
-├── wp-content/
-│   └── themes/
-│       ├── tema-personal/   # Tema personalizado principal
-│       └── solar-theme/     # Tema alternativo
-└── .env                     # Variables de entorno (local)
-```
+## Commands
 
-## Tema Personal
-
-El tema incluye:
-
-- Homepage personalizada
-- Template de blog con grid de 3 columnas
-- Single post con sidebar
-- Sistema de widgets
-- Menús personalizables
-- Soporte para imágenes destacadas
-- Diseño responsive
-
-**Documentación completa:** `wp-content/themes/tema-personal/README.md`
-
-## Comandos Útiles
-
-### Ver logs
 ```bash
+# View logs
 docker-compose logs -f
-```
 
-### Detener contenedores
-```bash
+# Stop containers
 docker-compose down
-```
 
-### Reiniciar
-```bash
+# Restart
 docker-compose restart
 ```
 
-### Exportar base de datos (después de hacer cambios)
-```bash
-./export.sh
-```
-
-## Desarrollo
-
-### Modificar el tema
-Los archivos del tema están en:
-```
-wp-content/themes/tema-personal/
-```
-
-Los cambios se reflejan automáticamente (refresca el navegador).
-
-### Actualizar base de datos en GitHub
-
-Después de agregar contenido al blog:
-
-```bash
-./export.sh
-git add database.sql
-git commit -m "Update blog content"
-git push
-```
-
-## Troubleshooting
-
-### Puerto 8080 en uso
-Edita `docker-compose.yml` y cambia el puerto:
-```yaml
-ports:
-  - "8081:80"  # Cambia 8080 por otro puerto
-```
-
-### MySQL no arranca
-```bash
-docker-compose down -v  # Elimina volúmenes
-./setup.sh              # Vuelve a ejecutar setup
-```
-
-### Permisos de archivos
-```bash
-sudo chown -R $USER:$USER wp-content/
-```
-
-## Tecnologías
-
-- WordPress 6.x
-- MySQL 5.7
-- Docker / Docker Compose
-- PHP 8.x
-- HTML5 / CSS3 / JavaScript
-
-## Licencia
+## License
 
 GPL v2 or later
-
-## Autor
-
-Diego - [Tu GitHub/Portfolio]
