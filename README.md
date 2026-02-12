@@ -1,100 +1,149 @@
-# WordPress Solar Theme - Blog Setup
+# WordPress Blog - Tema Personal
 
-Professional WordPress theme with complete blog system.
+WordPress blog con tema personalizado desarrollado desde cero.
 
-## 📝 Important Note
+## Características
 
-This repository contains the **theme files** (code), but **NOT the database** (blog posts, pages, settings).
+- Tema personalizado "Tema Personal" con diseño profesional
+- Sistema de blog completo con posts, categorías y tags
+- Diseño responsive
+- Widgets personalizados
+- Docker Compose para desarrollo local
 
-**Why?** GitHub stores files, not databases. After cloning, you need to configure the blog.
+## Requisitos
 
----
+- Docker
+- Docker Compose
+- Git
 
-## Blog Setup (5 minutes)
+## Instalación Rápida
 
-### 1. Activate the Theme
+```bash
+# Clonar repositorio
+git clone <tu-repositorio-url>
+cd mi_blog_prueba
 
-- Go to **Appearance → Themes**
-- Activate **Tema Personal Solar**
+# Ejecutar setup automático
+./setup.sh
+```
 
-### 2. Create Homepage
+El script automáticamente:
+1. Crea el archivo `.env` de configuración
+2. Levanta los contenedores de Docker
+3. Importa la base de datos con contenido demo
+4. Configura WordPress
 
-- Go to **Pages → Add New**
-- Title: "Home"
-- Don't select any template
-- Publish
+**Tiempo estimado: 2 minutos**
 
-### 3. Create Blog Page
+## Acceso
 
-- Go to **Pages → Add New**
-- Title: "Blog"
-- **Page Attributes → Template → "Blog Traveler"**
-- Publish
+- **URL:** http://localhost:8080
+- **Usuario:** admin
+- **Contraseña:** admin
 
-### 4. Configure Reading Settings
+## Estructura del Proyecto
 
-- Go to **Settings → Reading**
-- Select "A static page"
-- Homepage: Select "Home"
-- Posts page: Select "Blog"
-- Save changes
+```
+.
+├── docker-compose.yml       # Configuración Docker
+├── setup.sh                 # Script de instalación automática
+├── database.sql             # Backup de base de datos
+├── wp-content/
+│   └── themes/
+│       ├── tema-personal/   # Tema personalizado principal
+│       └── solar-theme/     # Tema alternativo
+└── .env                     # Variables de entorno (local)
+```
 
-### 5. Create Posts
+## Tema Personal
 
-- Go to **Posts → Add New**
-- Write title and content
-- Add Featured Image (recommended 800x600px)
-  - If you skip this, the theme will use a default image automatically
-- Publish
-- Repeat to create 2-3 posts
+El tema incluye:
 
-### 6. Create Menu
+- Homepage personalizada
+- Template de blog con grid de 3 columnas
+- Single post con sidebar
+- Sistema de widgets
+- Menús personalizables
+- Soporte para imágenes destacadas
+- Diseño responsive
 
-- Go to **Appearance → Menus**
-- Create a new menu
-- Add pages (Home, Blog, About, Services, Contact, Projects)
-- Assign to "Primary Menu" location
-- Save
+**Documentación completa:** `wp-content/themes/tema-personal/README.md`
 
-**Done!** Your blog is now accessible at `/blog/`
+## Comandos Útiles
 
----
+### Ver logs
+```bash
+docker-compose logs -f
+```
 
-## Blog Features
+### Detener contenedores
+```bash
+docker-compose down
+```
 
-- ✅ Posts archive with 2-column grid
-- ✅ Single post layout with sidebar
-- ✅ Blog template with 3-column layout
-- ✅ Automatic default images
-- ✅ Pagination
-- ✅ Categories and tags
-- ✅ Responsive design
-- ✅ Widgets support (search, categories, recent posts)
+### Reiniciar
+```bash
+docker-compose restart
+```
 
-## Customizing the Blog Sidebar
+### Exportar base de datos (después de hacer cambios)
+```bash
+./export.sh
+```
 
-1. Go to **Appearance → Widgets**
-2. Find **"Blog Sidebar"** area
-3. Add widgets:
-   - Search
-   - Categories
-   - Recent Posts
-   - Tag Cloud
-   - Archives
+## Desarrollo
 
----
+### Modificar el tema
+Los archivos del tema están en:
+```
+wp-content/themes/tema-personal/
+```
 
-## Theme Documentation
+Los cambios se reflejan automáticamente (refresca el navegador).
 
-For complete theme documentation, see:
-`wp-content/themes/tema-personal/README.md`
+### Actualizar base de datos en GitHub
 
-## Requirements
+Después de agregar contenido al blog:
 
-- WordPress 5.0+
-- PHP 7.4+
-- MySQL 5.6+
+```bash
+./export.sh
+git add database.sql
+git commit -m "Update blog content"
+git push
+```
 
-## License
+## Troubleshooting
+
+### Puerto 8080 en uso
+Edita `docker-compose.yml` y cambia el puerto:
+```yaml
+ports:
+  - "8081:80"  # Cambia 8080 por otro puerto
+```
+
+### MySQL no arranca
+```bash
+docker-compose down -v  # Elimina volúmenes
+./setup.sh              # Vuelve a ejecutar setup
+```
+
+### Permisos de archivos
+```bash
+sudo chown -R $USER:$USER wp-content/
+```
+
+## Tecnologías
+
+- WordPress 6.x
+- MySQL 5.7
+- Docker / Docker Compose
+- PHP 8.x
+- HTML5 / CSS3 / JavaScript
+
+## Licencia
 
 GPL v2 or later
+
+## Autor
+
+Diego - [Tu GitHub/Portfolio]
