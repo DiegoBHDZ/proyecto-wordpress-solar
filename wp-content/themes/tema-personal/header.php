@@ -24,20 +24,20 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav ml-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="#service" class="nav-item nav-link">Service</a>
-                <a href="#project" class="nav-item nav-link">Project</a>
+                <a href="<?php echo is_front_page() ? '#home' : home_url('/#home'); ?>" class="nav-item nav-link <?php echo is_front_page() ? 'active' : ''; ?>">Home</a>
+                <a href="<?php echo is_front_page() ? '#about' : home_url('/#about'); ?>" class="nav-item nav-link">About</a>
+                <a href="<?php echo is_front_page() ? '#service' : home_url('/#service'); ?>" class="nav-item nav-link">Service</a>
+                <a href="<?php echo is_front_page() ? '#project' : home_url('/#project'); ?>" class="nav-item nav-link">Project</a>
             </div>
             <a href="<?php echo home_url(); ?>" class="navbar-brand bg-primary px-4 mx-3 d-none d-lg-block">
                 <h1 class="display-4 text-white text-uppercase m-0">Solar</h1>
             </a>
             <div class="navbar-nav mr-auto py-0">
-                <a href="#team" class="nav-item nav-link">Team</a>
+                <a href="<?php echo is_front_page() ? '#team' : home_url('/#team'); ?>" class="nav-item nav-link">Team</a>
                 <a href="<?php echo home_url('/blog/'); ?>" class="nav-item nav-link">Blog</a>
-                <a href="#faqs" class="nav-item nav-link">FAQs</a>
-                <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
-                <a href="#contact" class="nav-item nav-link">Contact</a>
+                <a href="<?php echo is_front_page() ? '#faqs' : home_url('/#faqs'); ?>" class="nav-item nav-link">FAQs</a>
+                <a href="<?php echo is_front_page() ? '#testimonial' : home_url('/#testimonial'); ?>" class="nav-item nav-link">Testimonial</a>
+                <a href="<?php echo is_front_page() ? '#contact' : home_url('/#contact'); ?>" class="nav-item nav-link">Contact</a>
             </div>
         </div>
     </nav>

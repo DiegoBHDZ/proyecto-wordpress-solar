@@ -40,7 +40,7 @@ add_action('after_setup_theme', 'tema_personal_setup');
  */
 function tema_personal_enqueue_scripts() {
     // Versión del tema
-    $theme_version = '1.0.2';
+    $theme_version = '1.0.3';
 
     // Google Fonts - Poppins para TRAVELER
     wp_enqueue_style(

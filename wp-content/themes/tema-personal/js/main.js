@@ -14,16 +14,21 @@
     // Smooth scrolling on the navbar links
     $(".navbar-nav a, .btn-scroll").on('click', function (event) {
         if (this.hash !== "") {
-            event.preventDefault();
-            
-            $('html, body').animate({
-                scrollTop: $(this.hash).offset().top - 45
-            }, 1500, 'easeInOutExpo');
-            
-            if ($(this).parents('.navbar-nav').length) {
-                $('.navbar-nav .active').removeClass('active');
-                $(this).closest('a').addClass('active');
+            // Check if the target section exists on the current page
+            var target = $(this.hash);
+            if (target.length) {
+                event.preventDefault();
+
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 45
+                }, 1500, 'easeInOutExpo');
+
+                if ($(this).parents('.navbar-nav').length) {
+                    $('.navbar-nav .active').removeClass('active');
+                    $(this).closest('a').addClass('active');
+                }
             }
+            // If target doesn't exist, allow normal navigation (redirect to home with hash)
         }
     });
 
