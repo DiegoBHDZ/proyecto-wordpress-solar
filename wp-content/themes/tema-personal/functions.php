@@ -163,7 +163,7 @@ function tema_personal_enqueue_scripts() {
     wp_enqueue_script(
         'tema-personal-main',
         get_template_directory_uri() . '/js/main.js',
-        array('jquery', 'bootstrap-bundle', 'owl-carousel'),
+        array('jquery', 'bootstrap-bundle', 'easing', 'owl-carousel'),
         $theme_version,
         true
     );
