@@ -1,0 +1,27 @@
+/*
+Theme Name: Strategikos
+Theme URI: https://strategikos.com
+Author: Diego
+Author URI: https://strategikos.com
+Description: Tema corporativo de Strategikos. Consultoría en análisis de riesgos territoriales y seguridad integral. Basado en Page Templates tradicionales de WordPress.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tema-strategikos
+Tags: business, consulting, corporate, one-column, custom-templates
+*/
+
+/*
+==================================================
+NOTA IMPORTANTE:
+==================================================
+Este archivo solo contiene la información del tema
+para que WordPress lo reconozca.
+
+Los estilos CSS reales del template están en:
+/css/style.css
+
+Estos se cargan automáticamente desde functions.php
+usando wp_enqueue_style()
+==================================================
+*/
